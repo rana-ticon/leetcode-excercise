@@ -33,7 +33,6 @@ Follow up: Can you solve the problem in O(1) extra space complexity? (The output
 */
 
 var productExceptSelf = function (nums) {
-	const output = new Array(nums.length);
 	let lastProduct = 1;
 	for (let index = 0; index < nums.length; index++) {
 		lastProduct = index === 0 ? lastProduct : nums[index - 1] * lastProduct;
