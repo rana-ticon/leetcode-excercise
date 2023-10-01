@@ -2,7 +2,7 @@
  * Title: Product of Array Except Self
  * Author: Bokhtiar Rahman
  * Email: lyfizbzy@gmail.com
- * Created on Sat Sep 30 2023
+ * Created on Sat OCT 01 2023
  */
 
 //Leetcode URL: https://leetcode.com/problems/product-of-array-except-self/
