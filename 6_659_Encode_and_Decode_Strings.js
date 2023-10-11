@@ -27,16 +27,46 @@ One possible encode method is: "we:;say:;:::;yes"
 */
 
 var encode = function (strs) {
-	let output = '';
-	for (let str of strs) {
-		output += `${str.length}#${str}`;
-	}
-	return output;
+    let output = '';
+    for (let str of strs) {
+        output += `${str.length}#${str}`;
+    }
+    return output;
 };
 
-var decode = function (str) {};
+var decode = function (str) {
+    let length = 0;
+    let lengthStr = '';
+    let element = '';
+    let output = [];
 
-const input = ['we', 'say', ':', 'yes'];
-const decodeInput = '2#we3#say1#:3#yes';
-console.log(encode(input));
-console.log(decode(decodeInput));
+    for (const char of str) {
+        // If at the start of a new string
+        if (length === 0) {
+            if (char === '#') {
+                length = parseInt(lengthStr);
+                lengthStr = '';
+            } else {
+                // Read the length of the next string
+                lengthStr += char;
+            }
+        }
+        // If reading the characters of a string
+        else {
+            element += char;
+            length--;
+
+            // If end of the string
+            if (length === 0) {
+                output.push(element);
+                element = '';
+            }
+        }
+    }
+    return output;
+};
+
+const input = ['lint', 'code', 'love', 'you'];
+const encodedString = encode(input);
+console.log(encodedString);
+console.log(decode(encodedString));
